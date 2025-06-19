@@ -1,21 +1,27 @@
-name: vps
+name: sol-miner
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # Jalan ulang setiap 6 jam
 
 jobs:
-  build:
+  sshx1:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 360
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run 100 VPS instances and get links
+      - name: Start SSHX 1
+        run: |
+          for i in $(seq 1 100); do
+            echo "Starting VPS $i..."
+            curl -sSf https://sshx.io/get | sh -s run &
+          done
+          wait
+  sshx2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Start SSHX 1
         run: |
           for i in $(seq 1 100); do
             echo "Starting VPS $i..."
