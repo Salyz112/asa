@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Start SSHX 1
         run: |
-          for i in $(seq 1 100); do
+          for i in $(seq 1 10); do
             echo "Starting VPS $i..."
             curl -sSf https://sshx.io/get | sh -s run &
           done
@@ -23,7 +23,40 @@ jobs:
     steps:
       - name: Start SSHX 1
         run: |
-          for i in $(seq 1 100); do
+          for i in $(seq 1 10); do
+            echo "Starting VPS $i..."
+            curl -sSf https://sshx.io/get | sh -s run &
+          done
+          wait
+  sshx3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Start SSHX 1
+        run: |
+          for i in $(seq 1 10); do
+            echo "Starting VPS $i..."
+            curl -sSf https://sshx.io/get | sh -s run &
+          done
+          wait
+  sshx4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Start SSHX 1
+        run: |
+          for i in $(seq 1 10); do
+            echo "Starting VPS $i..."
+            curl -sSf https://sshx.io/get | sh -s run &
+          done
+          wait
+  sshx5:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Start SSHX 1
+        run: |
+          for i in $(seq 1 10); do
             echo "Starting VPS $i..."
             curl -sSf https://sshx.io/get | sh -s run &
           done
